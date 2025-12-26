@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>body { background-color: #000; color: white; }</style>
+</head>
+<body class="flex flex-col items-center justify-start pt-12 px-6 min-h-screen">
+    <div class="w-full max-w-md bg-[#0a0a0a] border border-[#1a1a1a] p-8 rounded-[3rem] shadow-2xl text-center">
+        <div class="w-16 h-16 bg-red-600 rounded-full mx-auto mb-6 flex items-center justify-center text-2xl font-bold shadow-[0_0_20px_rgba(220,38,38,0.5)]">
+            <%= target[0].toUpperCase() %>
+        </div>
+        <h2 class="text-lg font-bold mb-1">@<%= target %></h2>
+        <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-8 text-red-500">kirim pesan anonim!</p>
+        
+        <form action="/send/<%= target %>" method="POST" class="space-y-4">
+            <textarea name="text" required maxlength="200"
+                class="w-full h-44 p-6 rounded-[2rem] bg-black border border-[#222] text-white focus:border-red-600 outline-none resize-none text-md font-medium"
+                placeholder="Tulis pesan rahasia di sini..."></textarea>
+            
+            <button class="w-full py-5 bg-white text-black rounded-full font-black text-xs uppercase tracking-[0.2em] hover:bg-red-600 hover:text-white transition-all shadow-xl">
+                Kirim Anonim!
+            </button>
+        </form>
+        <p class="mt-8 text-[9px] text-gray-700 uppercase tracking-[0.3em]">Aman & 100% Anonim</p>
+    </div>
+</body>
+</html>

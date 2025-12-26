@@ -1,0 +1,35 @@
+
+const { Redis } = require('@upstash/redis');
+
+const redis = new Redis({
+  url: 'ISI_LINK_URL_UPSTASH_KWLIAN',
+  token: 'ISI_KEY_TOKEN_UPSTASH_KWLIAN',
+});
+
+const User = {
+  create: async (username, password) => {
+    if(!username || !password) return false;
+    
+    const cleanUser = username.trim().toLowerCase();
+    const cleanPass = password.trim();
+
+    const exists = await redis.get(`user:${cleanUser}`);
+    if (exists) return false;
+
+    await redis.set(`user:${cleanUser}`, cleanPass);
+    return true;
+  },
+  
+  login: async (username, password) => {
+    if(!username || !password) return false;
+
+    const cleanUser = username.trim().toLowerCase();
+    const cleanPass = password.trim();
+
+    const savedPass = await redis.get(`user:${cleanUser}`);
+    
+    return String(savedPass) === String(cleanPass);
+  }
+};
+
+module.exports = User;
