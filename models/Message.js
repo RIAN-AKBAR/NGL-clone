@@ -3,7 +3,7 @@ const { Redis } = require('@upstash/redis');
 
 const redis = new Redis({
   url: 'https://deep-walrus-53361.upstash.io',
-  token: 'AdBxAAIncDFmZmU4M2ZiYTcyZTY0ODA4ODYwNDg5OWExMzBmMGI3MHAxNTMzNjE',
+  token: 'sb_publishable_tg99dSwnEVJnug9Lf8Vf7w_-87rZc-b',
 });
 
 const Message = {
